@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import NavBar from "@/componets/layout/NavBar";
+import NavBar from "@/components/layout/NavBar";
 
 
 

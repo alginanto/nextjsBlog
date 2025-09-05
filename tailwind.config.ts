@@ -1,10 +1,12 @@
 import type { Config } from "tailwindcss";
 
-export default {
+const config: Config = {
   content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./componets/**/*.{js,ts,jsx,tsx,mdx}", // catch the typo too
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",       // extra safety
   ],
   theme: {
     extend: {
@@ -15,4 +17,6 @@ export default {
     },
   },
   plugins: [],
-} satisfies Config;
+};
+
+export default config;
