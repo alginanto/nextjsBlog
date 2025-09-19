@@ -4,12 +4,8 @@ import { useTheme } from "next-themes";
 
 const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
-  console.log(theme);
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
   return (
-    <button onClick={toggleTheme}>
+    <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
       <Sun className="hidden dark:block" />
       <Moon className="block dark:hidden" />
     </button>

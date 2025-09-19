@@ -1,22 +1,24 @@
 import type { Metadata } from "next";
-import { Nunito } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import NavBar from "@/components/layout/NavBar";
 import { ThemeProvider } from "next-themes";
 
-const nunito = Nunito({
-  variable: "--font-nunito",
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  weight: ["400", "700"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Web Dev Blog",
-  description: "A blog about web development and programming.",
-  icons: {
-    icon: "/logo.svg",
-  },
+  title: "web dev blog",
+  description: "A blog about web development",
+  icons: { icon: "/logo.svg" },
 };
 
 export default function RootLayout({
@@ -29,7 +31,8 @@ export default function RootLayout({
       <body
         className={cn(
           "antialiased flex flex-col min-h-screen px-2",
-          nunito.variable
+          geistSans.variable,
+          geistMono.variable
         )}
       >
         <ThemeProvider
@@ -39,9 +42,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <NavBar />
-          <main className="flex-grow"> {children}</main>
-
-          <footer>Footer</footer>
+          <main className="flex-grow">{children}</main>
+          <footer className="mt-auto">Footer</footer>
         </ThemeProvider>
       </body>
     </html>
