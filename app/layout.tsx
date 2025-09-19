@@ -3,8 +3,7 @@ import { Nunito } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import NavBar from "@/components/layout/NavBar";
-
-
+import { ThemeProvider } from "next-themes";
 
 const nunito = Nunito({
   variable: "--font-nunito",
@@ -26,14 +25,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={cn('antialiased bg-gray-300 flex flex-col min-h-screen px-2',nunito.variable)}
+        className={cn(
+          "antialiased flex flex-col min-h-screen px-2",
+          nunito.variable
+        )}
       >
-      <NavBar />
-      <main className="flex-grow"> {children}</main>
-  
-        <footer>Footer</footer>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NavBar />
+          <main className="flex-grow"> {children}</main>
+
+          <footer>Footer</footer>
+        </ThemeProvider>
       </body>
     </html>
   );
