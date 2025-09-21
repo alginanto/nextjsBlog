@@ -1,8 +1,10 @@
 import { MdNoteAlt } from "react-icons/md";
 import Container from "./Container";
 import ThemeToggle from "./ThemeToggle";
-import { Search } from "lucide-react";
 import SearchInput from "./SearchInput";
+import Notifications from "./Notification";
+import UserButton from "./UserButton";
+import { Link } from "lucide-react";
 
 const NavBar = () => {
   return (
@@ -16,8 +18,12 @@ const NavBar = () => {
           <SearchInput />
           <div className="flex gap-5 sm:gap-8 items-center">
             <ThemeToggle />
-            <div>Notification</div>
-            <div>UserMenu</div>
+         <Notifications/>
+           <UserButton />
+           <>
+           <Link href="/login">Login</Link>
+             <Link href="/register">Register</Link>
+           </>
           </div>
         </div>
       </Container>
