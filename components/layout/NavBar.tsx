@@ -18,12 +18,12 @@ const NavBar = () => {
           <SearchInput />
           <div className="flex gap-5 sm:gap-8 items-center">
             <ThemeToggle />
-         <Notifications/>
-           <UserButton />
-           <>
-           <Link href="/login">Login</Link>
-             <Link href="/register">Register</Link>
-           </>
+            <Notifications />
+            <UserButton />
+            <>
+              <Link href="/login"> Login</Link>
+              <Link href="/register"> Register</Link>
+            </>
           </div>
         </div>
       </Container>
