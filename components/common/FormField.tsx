@@ -26,8 +26,10 @@ const FormField = ({
   register,
   errors,
 }: FormFieldProps) => {
+  const message = errors[id] && (errors[id]?.message as string);
   return (
     <div>
+      {label && <span className="block text-sm font-medium">{label}</span>}
       <input
         id={id}
         type={type}
@@ -40,6 +42,7 @@ const FormField = ({
         )}
         {...register(id as Path<LoginValues>)}
       />
+      {message && <span className="text-sm text-rose-400">{message}</span>}
     </div>
   );
 };
