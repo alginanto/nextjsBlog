@@ -1,22 +1,27 @@
 import { cn } from "@/lib/utils";
-import { FieldErrors, Path, UseFormRegister } from "react-hook-form";
+import {
+  FieldErrors,
+  FieldValues,
+  Path,
+  UseFormRegister,
+} from "react-hook-form";
 
-interface LoginValues {
-  email: string;
-  password: string;
-}
+// interface LoginValues {
+//   email: string;
+//   password: string;
+// }
 
-interface FormFieldProps {
+interface FormFieldProps<T extends FieldValues> {
   id: string;
   type?: string;
   disabled?: boolean;
   placeholder: string;
   label?: string;
   inputClassNames?: string;
-  register: UseFormRegister<LoginValues>;
+  register: UseFormRegister<T>;
   errors: FieldErrors;
 }
-const FormField = ({
+const FormField = <T extends FieldValues>({
   id,
   type,
   disabled,
@@ -25,7 +30,7 @@ const FormField = ({
   inputClassNames,
   register,
   errors,
-}: FormFieldProps) => {
+}: FormFieldProps<T>) => {
   const message = errors[id] && (errors[id]?.message as string);
   return (
     <div>
@@ -40,7 +45,7 @@ const FormField = ({
           errors[id] && "border-rose-400",
           inputClassNames
         )}
-        {...register(id as Path<LoginValues>)}
+        {...register(id as Path<T>)}
       />
       {message && <span className="text-sm text-rose-400">{message}</span>}
     </div>

@@ -1,5 +1,4 @@
 "use client";
-import { LoginSchema, LoginSchemaType } from "@/schemas/LoginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, SubmitHandler, useForm } from "react-hook-form";
 import FormField from "../common/FormField";
@@ -7,14 +6,17 @@ import Button from "../common/Button";
 import Head from "next/head";
 import Heading from "../common/Heading";
 import SocialAuth from "./SocialAuth";
-const LoginForm = () => {
+import { RegisterSchema, RegisterSchemaType } from "@/schemas/RegisterSchema";
+const RegisterForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginSchemaType>({ resolver: zodResolver(LoginSchema) });
+  } = useForm<RegisterSchemaType>({ resolver: zodResolver(RegisterSchema) });
 
-  const onSubmit: SubmitHandler<LoginSchemaType> = (data: LoginSchemaType) => {
+  const onSubmit: SubmitHandler<RegisterSchemaType> = (
+    data: RegisterSchemaType
+  ) => {
     console.log(data);
   };
   return (
@@ -23,6 +25,12 @@ const LoginForm = () => {
       className="flex flex-col max-w-[500px] m-auto mt-8 gap-2"
     >
       <Heading title="Create a WEBDEV.blog Account" center lg />
+      <FormField
+        id="name"
+        register={register}
+        errors={errors}
+        placeholder="Name"
+      />
       <FormField
         id="email"
         register={register}
@@ -36,11 +44,24 @@ const LoginForm = () => {
         placeholder="Password"
         type="password"
       />
-      <Button type="submit" label="Login" outlined small onClick={() => {}} />
+      <FormField
+        id="ConfirmPassword"
+        register={register}
+        errors={errors}
+        placeholder="Confirm Password"
+        type="password"
+      />
+      <Button
+        type="submit"
+        label="Register"
+        outlined
+        small
+        onClick={() => {}}
+      />
       <div className="flex justify-center my-2">Or</div>
       <SocialAuth />
     </form>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
