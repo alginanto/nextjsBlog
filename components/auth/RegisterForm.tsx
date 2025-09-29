@@ -22,7 +22,7 @@ const LoginForm = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col max-w-[500px] m-auto mt-8 gap-2"
     >
-      <Heading title="Login to WEBDEV.blog" center lg />
+      <Heading title="Create a WEBDEV.blog Account" center lg />
       <FormField
         id="email"
         register={register}
