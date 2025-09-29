@@ -3,6 +3,7 @@ import { LoginSchema, LoginSchemaType } from "@/schemas/LoginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, SubmitHandler, useForm } from "react-hook-form";
 import FormField from "../common/FormField";
+import Button from "../common/Button";
 const LoginForm = () => {
   const {
     register,
@@ -31,12 +32,7 @@ const LoginForm = () => {
         placeholder="Password"
         type="password"
       />
-      <button
-        type="submit"
-        className="bg-blue-500 text-white p-3 rounded-md mt-2 hover:bg-blue-600 transition"
-      >
-        Login
-      </button>
+      <Button type="submit" label="Login" outlined small onClick={() => {}} />
     </form>
   );
 };
