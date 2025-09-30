@@ -4,7 +4,7 @@ import ThemeToggle from "./ThemeToggle";
 import SearchInput from "./SearchInput";
 import Notifications from "./Notification";
 import UserButton from "./UserButton";
-import { Link } from "lucide-react";
+import Link from "next/link";
 
 const NavBar = () => {
   return (
@@ -21,7 +21,9 @@ const NavBar = () => {
             <Notifications />
             <UserButton />
             <>
-              <Link href="/login"> Login</Link>
+              <Link href="/login" className="hover:underline">
+                Login
+              </Link>
               <Link href="/register"> Register</Link>
             </>
           </div>
